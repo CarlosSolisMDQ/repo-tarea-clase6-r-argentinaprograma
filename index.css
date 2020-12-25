@@ -1,0 +1,12 @@
+body{
+    background-color: #63cdda;
+}
+
+label, p{
+    color: black;
+    font-family: 'Prompt', sans-serif;
+}
+
+div{
+    margin-top: 20px;
+}
