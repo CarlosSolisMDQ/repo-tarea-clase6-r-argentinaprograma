@@ -30,6 +30,15 @@ let salidaDeDatos = document.querySelector("#salida-de-datos");
 
 botonDeIntegrantes.onclick = () => {
     let cantidadDeIntegrantes = document.querySelector("#cantidad-de-integrantes").value;
+    
+    //correccion sugerida por Nacho en el slack para que un nuevo ingreso resetee el formulario
+    let nodoPadre = document.querySelector("#cadena-de-inputs");
+    nodoPadre.querySelectorAll('*').forEach(n => n.remove());
+    salidaDeDatos.innerText = "";
+    document.querySelector("#cantidad-de-integrantes").value = "";
+    //queda ver si se puede funcionalizar para no repetir codigo
+    
+    
     for(let i = 0; i < cantidadDeIntegrantes; i++){
         //uso el agregar y borrar como si fueran componentes, pero sin react.
         agregarIntegrante(i);
