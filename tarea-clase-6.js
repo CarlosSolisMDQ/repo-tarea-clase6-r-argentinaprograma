@@ -30,13 +30,11 @@ let salidaDeDatos = document.querySelector("#salida-de-datos");
 
 botonDeIntegrantes.onclick = () => {
     let cantidadDeIntegrantes = document.querySelector("#cantidad-de-integrantes").value;
-    //correccion para que un nuevo ingreso resetee el formulario
-    let nodoPadre = document.querySelector("#cadena-de-inputs");
-    nodoPadre.querySelectorAll('*').forEach(n => n.remove());
-    salidaDeDatos.innerText = "";
-    document.querySelector("#cantidad-de-integrantes").value = "";
-    //queda ver si se puede funcionalizar para no repetir codigo
-    
+    limpiarFormulario()
+    /*
+    //correccion para que un nuevo ingreso resetee el formulario.
+    //edit2:ahora corrí todo a una funcion limpiarFormulario();
+    */
     for(let i = 0; i < cantidadDeIntegrantes; i++){
         //uso el agregar y borrar como si fueran componentes, pero sin react.
         agregarIntegrante(i);
@@ -73,12 +71,13 @@ botonDeCalcular.onclick = () => {
 }
 
 botonDeReset.onclick = () => {
-    //dejo el codigo de mi primer solucion a esto, busque una mejor alternativa porque me pareció una gronchada lo que hice primero.
-    let nodoPadre = document.querySelector("#cadena-de-inputs");
-    nodoPadre.querySelectorAll('*').forEach(n => n.remove());
-    salidaDeDatos.innerText = "";
-    document.querySelector("#cantidad-de-integrantes").value = "";
+    
+    //agrego el codigo de lipieza a la funcion limpiarFormulario();
+    limpiarFormulario();
+    
+    
     //borro todos los subnodos del contenedor de inputs y la salida de datos mas el input de integrantes.
+    
     /*
     //solucion vieja.
 
@@ -135,6 +134,16 @@ let borrarIntegrante = (i) => {
         divParaBorrarDelBoton.parentNode.removeChild(divParaBorrarDelBoton);
         //este modulo selecciona la clase custom numerada que le di a cada elemento relacionado con el input base.
     }
+}
+
+let limpiarFormulario = () => {
+    //correccion para que un nuevo ingreso resetee el formulario
+    //edit2: despejo este segmento de codigo en una funcion para usarlo en la accion de reset y al inicio de agregarIntegrante.
+    let nodoPadre = document.querySelector("#cadena-de-inputs");
+    nodoPadre.querySelectorAll('*').forEach(n => n.remove());
+    salidaDeDatos.innerText = "";
+    document.querySelector("#cantidad-de-integrantes").value = "";
+    //queda ver si se puede funcionalizar para no repetir codigo
 }
 
 
